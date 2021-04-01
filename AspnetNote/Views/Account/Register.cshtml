@@ -1,0 +1,67 @@
+﻿@* 
+     asp-for에 UserId등을 적을수 있도록 참조
+     모델의 User참조 AspnetNote.Models.User 
+*@
+
+@model AspnetNote.Models.User
+<h2>회원가입</h2>
+
+@*/////////////////////////// 부트스트랩 /////////////////////////////////////////////////
+
+    일반적인 표준폼 만들때
+    class="form-horizontal"
+
+    class="form-control" 하단으로 표기 되면서 하단으로 표기되면서 예쁘게
+    class="form-control"
+
+/////////////////////////// Razor 구문 ( 어떤 행동 ) /////////////////////////////////////////////////
+
+    asp-controller="Account" 어느 컨트롤로 넘길 것이냐?
+    asp-action="Register" 어느 액션을 할 것이냐 ?
+    asp-for : 필드가 어떤 것인지 알려줘야 됨
+
+    Account 컨트롤러의  Register로 Post로 넘김
+*@
+<form class="form-horizontal" method="post" asp-controller="Account" asp-action="Register">
+    <div class="form-group">
+        <label>사용자 ID</label>
+        @*
+            class="form-control" 하단으로 표기 되면서 하단으로 표기되면서 예쁘게
+        *@
+        <input type="text" class="form-control" asp-for="UserId" placeholder="사용자 ID 입력" />
+        @*
+            입력을 하지 않을 경우 메시지 표기*
+            User.cs의 [Required]  // Not Null 설정했으므로 반드시 넣어야 함
+        *@
+        <span class="text-danger" asp-validation-for="UserId"></span>
+    </div>
+
+    <div class="form-group">
+        <label>사용자 비밀번호</label>
+        <input type="text" class="form-control" asp-for="UserPassword" placeholder="사용자 비밀번호 입력" />
+        @*
+            입력을 하지 않을 경우 메시지 표기
+        *@
+        <span class="text-danger" asp-validation-for="UserPassword"></span>
+    </div>
+
+    <div class="form-group">
+        <label>사용자 이름</label>
+        <input type="text" class="form-control" asp-for="UserName" placeholder="사용자 이름 입력" />
+        @*
+            입력을 하지 않을 경우 메시지 표기
+        *@
+        <span class="text-danger" asp-validation-for="UserName"></span>
+    </div>
+
+    <div class="form-group">
+        @*
+            class="btn btn-primary" 파란색
+        *@
+        <button type="submit" class="btn btn-primary">회원가입</button>
+        @*
+            class="btn btn-warning" 오렌지색
+        *@
+        <a class="btn btn-warning" href="#">취소</a>
+    </div>
+</form>

@@ -1,0 +1,40 @@
+﻿@*
+    @model AspnetNote.Models.User 는 3가지(UserName, UserId, UserPassword)를 요구하므로 여기서는 UserId와 UserPassword만 있으면 되므로
+    AspnetNote.ViewModel.LoginViewModel을 참조해서 2가지만 체크하면 되므로 따로 제작해서 참조 했다.
+*@
+
+@* 참조 : 에러를 체크 하기 위한 LoginViewModel을 설정 하였으므로 LoginViewModel로 에러 체크하기 위해서 따로 제작해서 사용 *@
+@model AspnetNote.ViewModel.LoginViewModel
+<h2>로그인</h2>
+
+@*
+    Form class + method[post] + Controller + action
+*@
+<form class="form-horizontal" method="post" asp-controller="Account" asp-action="Login">
+    @*
+        사용자도 입력했고 암호도 넣었지만 그밖의 에러들은 일일히 나타내기 그러니까 전역전인 에러메시지 발생시는 ModelState.AddModelError를 이용한다.
+        AccountController 로그인 실패한 경우 ModelState.AddModelError 에러메시지 발생시 나타내는 메시지 설정
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    *@
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <label>사용자ID</label>
+        @* 사용자Id입력 *@
+        <input type="text" asp-for="UserId" class="form-control" placeholder="사용자 이름을 넣으세요" />
+        @* 벨리데이션 체크 : asp-validation-for ="UserId" *@
+        <span class="text-danger" asp-validation-for="UserId"></span>
+    </div>
+
+    <div class="form-group">
+        <label>비밀번호</label>
+        <input type="password" asp-for="UserPassword" class="form-control" placeholder="비밀번호를 입력 하세요" />
+        @* 벨리데이션 체크 : asp-validation-for="UserPassword" *@
+        <span class="text-danger" asp-validation-for="UserPassword"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">로그인</button>
+    </div>
+
+</form>
+

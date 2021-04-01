@@ -1,0 +1,47 @@
+﻿@using System.Diagnostics;
+@{
+    ViewData["Title"] = "Home Page";
+    //System.Diagnostics.Process.Start("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe");
+    //    System.Diagnostics.Process.Start("calc");
+    var output = "Hello World";
+
+}
+<p>The rendered result: @output</p>
+
+<div>From method: @GetHello()</div>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@*@System.Diagnostics.Process.Start("calc");*@
+
+@*@Process.Start("calc");*@
+
+
+
+@functions {
+    public string GetHello()
+    {
+        //System.Diagnostics.Process.Start("C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe");
+        //C:\ProgramData\Microsoft\Windows\Start Menu\Programs
+        //System.Diagnostics.Process.Start(@"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\PowerPoint 2016");
+        //System.Diagnostics.Process.Start("calc");
+
+        //Process p = new Process();
+        //ProcessStartInfo startInfo = new ProcessStartInfo();
+        //startInfo.FileName = "cmd.exe";
+        //startInfo.Arguments = @"/c " + "dir"; // cmd.exe spesific implementation
+        //p.StartInfo = startInfo;
+        //p.Start();
+
+        return "안녕하세요";
+    }
+}
+
+
+
+@*@System.Diagnostics.Process.Start(@"C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe");*@
+
+

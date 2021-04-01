@@ -1,0 +1,27 @@
+﻿<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @*
+        note 이름은 아무거나 적어도 된다.. 받아올 데이터 1개 / 객체로 넘어 왔으므로 Model ( Model은 List 제네릭 ) 로 지칭한다
+        *@
+        @foreach (var note in Model)
+        {
+        <tr>
+            <td>@note.NoteNo</td>
+            <td>@note.NoteTitle</td>
+            <td>@note.UserNo</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@*게시물 등록 링크 작성*@
+@*부트스트랩을 사용하기 위한 버튼 / asp-controller / 엑션*@
+<a class="btn btn-warning" asp-controller="Note" asp-action="Add">게시물 작성</a>
